@@ -2,6 +2,8 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "pg"
 
+# Go to localhost:4567 in webbrowser to run
+
 get "/" do
   erb :home
 end
