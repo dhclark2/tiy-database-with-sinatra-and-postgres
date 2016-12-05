@@ -9,10 +9,18 @@ get "/" do
 end
 
 get "/employees" do
-  database = PG.connect(dbname: 'tiy-database')
-  @rows = database.exec('SELECT * FROM employees')
+  database = PG.connect(dbname: "tiy-database")
+  @rows = database.exec("SELECT * FROM employees")
 
   erb :employees
+end
+
+get "/show_employee" do
+  id = params["id"]
+  database = PG.connect(dbname: "tiy-database")
+  @rows = database.exec("SELECT * FROM employees WHERE id = $1",[id])
+
+  erb :show_employee
 end
 
 get "/new_employee" do
