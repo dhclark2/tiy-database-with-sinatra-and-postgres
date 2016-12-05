@@ -68,11 +68,11 @@
           <td><%= row["github"] %></td>
           <td><%= row["slack"] %></td>
         </tr>
-        <% end %>
       </tbody>
     </table>
-    <a href="/delete_employee" class="btn btn-primary">Delete Employee</a>
-    <a href="/edit_employee" class="btn btn-primary">Edit Employee</a>
+    <a href="/delete_employee?id=<%= row["id"] %>" class="btn btn-primary">Delete Employee</a>
+    <a href="/edit_employee?id=<%= row["id"] %>" class="btn btn-primary">Edit Employee</a>
+    <% end %>
   </div>
 
 

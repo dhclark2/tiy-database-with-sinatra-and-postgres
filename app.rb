@@ -24,24 +24,31 @@ get "/show_employee" do
 end
 
 get "/edit_employee" do
+  id = params["id"]
+
+  database = PG.connect(dbname: "tiy-database")
+  @rows = database.exec("SELECT * FROM employees WHERE id = $1",[id])
+
+  @rows = @rows.first
   erb :edit_employee
 
 end
 
-# get "/delete_employee" do
-#   name = params["name"]
-#   database = PG.connect(dbname: "tiy-database")
-#   @rows = database.exec("DELETE * FROM employees WHERE name = $1",[name])
-#
-#   redirect to("/employees")
-# end
+get "/delete_employee" do
+  id = params["id"]
+
+  database = PG.connect(dbname: "tiy-database")
+  database.exec("DELETE FROM employees WHERE id = $1",[id])
+
+  redirect to("/employees")
+end
 
 get "/search" do
-  id params["id"]
+  search = params["search"]
   database = PG.connect(dbname: "tiy-database")
-  @rows = database.exec("SELECT * FROM employees WHERE id = $1",[id])
+  @rows = database.exec("SELECT * FROM employees WHERE name LIKE $1 OR github = $2 OR slack = $3",["%#{search}%", search, search])
 
-  erb :sumbit
+  erb :employees
 end
 
 get "/new_employee" do
@@ -64,6 +71,7 @@ post "/create_employee" do
 end
 
 post "/update_employee" do
+  id = params["id"]
   name = params["name"]
   address = params["address"]
   phone = params["phone"]
@@ -73,7 +81,7 @@ post "/update_employee" do
   slack = params["slack"]
 
   database = PG.connect(dbname: "tiy-database")
-  @rows = database.exec("UPDATE employees where id =$1,(name, address, phone, salary, position, github, slack) SET VALUES($1, $2, $3, $4, $5, $6, $7)",[name, address, phone, salary, position, github, slack])
+  @rows = database.exec("UPDATE employees SET name = $1, address = $2, phone = $3, salary = $4, position = $5, github = $6, slack = $7 WHERE id = $8",[name, address, phone, salary, position, github, slack, id])
 
   redirect to("/employees")
 end
