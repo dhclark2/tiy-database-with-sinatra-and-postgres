@@ -7,7 +7,6 @@ X landing page
   - *Other* Page
 
 X Employees link (to an employees URL)
-????X employee URL (second page) *SHOW EMPLOYEE* doesn't work
 X table
     name
     address
@@ -19,12 +18,12 @@ X table
     Link to show
 
 
-1.  Add Search bar on Employees Page to nav bar
-2.  New Search .erb
-      a. use search feature from previous assignment for partial name, slack, or github
-3.  Add Show More .erb for each employee in table
+X  Add Search bar on Employees Page to nav bar
+X  New Search .erb
+      X use search feature from previous assignment for partial name, slack, or github
+X  Add Show More .erb for each employee in table
       X  Displays that employee's info
-      b. Page should have an "Edit" button
+      X Page should have an "Edit" button
         i.  New page with editable fields (like from new employee) filled in.
         ii. Cancel button, takes back to the previous page
         iii. Submit saves the information and returns user back to employees index
