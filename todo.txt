@@ -23,7 +23,7 @@ X table
 2.  New Search .erb
       a. use search feature from previous assignment for partial name, slack, or github
 3.  Add Show More .erb for each employee in table
-      a. Displays that employee's info
+      X  Displays that employee's info
       b. Page should have an "Edit" button
         i.  New page with editable fields (like from new employee) filled in.
         ii. Cancel button, takes back to the previous page
